@@ -26,7 +26,7 @@
             <div class="dark-light-mode-switch">
                 <!-- Rounded switch -->
                 <label class="switch">
-                    <input type="checkbox">
+                    <input type="checkbox" id="themeToggle">
                     <span class="slider round">
                         <span class="sun"></span>
                         <span class="moon"></span>
@@ -171,5 +171,6 @@
             document.head.appendChild(script);
         })();
     </script>
+    <script th:src="@{/js/theme.js}" src="/js/theme.js"></script>
 </body>
 </html>

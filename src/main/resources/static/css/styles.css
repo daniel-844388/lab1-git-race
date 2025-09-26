@@ -26,7 +26,41 @@
     min-height: 200px;
 }
 
-/* Toggle Switch for dark/light mode */
+/* --- Dark theme --- */
+body.dark-mode {
+    background-color: #121212;
+    color: #f1f1f1;
+}
+
+.navbar.dark-mode {
+    background-color: #1f1f1f !important;
+    color: #f1f1f1 !important;
+}
+
+.card.dark-mode {
+    background-color: #1e1e1e;
+    border: 1px solid #555555;
+}
+
+.card.dark-mode:not(#requestInfo):not(#responseInfo) .card-title {
+    color: #f1f1f1;
+}
+
+.card-header.dark-mode {
+    background-color: #333 !important;
+    color: #f1f1f1 !important;
+    
+}
+
+.card.dark-mode .card-body .text-muted:not(#requestInfo .text-muted):not(#responseInfo .text-muted) {
+  color: #d3d3d3 !important;
+}
+
+body.dark-mode p.lead {
+    color: #f1f1f1;
+}
+
+/* --- Toggle Switch for dark/light mode --- */
 .dark-light-mode-switch {
     margin-left: 15px;
 }
@@ -106,7 +140,6 @@ input:checked + .slider:before {
   background-position: center;
 }
 
-/* Sun and moon imgs positions */
 .slider .sun {
   left: 7px;
   background-image: url('/assets/white-sun.png');
