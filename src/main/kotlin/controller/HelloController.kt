@@ -27,9 +27,32 @@ class HelloController(
     }
 }
 
+/**
+ * REST API controller that exposes a simple greeting service.
+ *
+ * Endpoints:
+ * - '/api/hello': Returns a JSON response with a personalized greeting
+ *   and a timestamp. The greeting message adapts to the time of day.
+ */
 @RestController
 class HelloApiController {
     
+    /**
+     * Handles HTTP GET requests to the REST API endpoint '/api/hello'.
+
+     * If param 'name', the greeting is personalized.
+     *
+     * The greeting changes depending on the current time of day:
+     * - Morning (06:00–11:59) → "Good Morning"
+     * - Afternoon (12:00–17:59) → "Good Afternoon"
+     * - Evening (18:00–23:59) → "Good Evening"
+     * - Night (00:00–05:59) → "Good Night"
+     *
+     * @param name optional name to personalize greeting (default: "World")
+     * @return a JSON map with:
+     *   - "message" → greeting message
+     *   - "timestamp" → current UTC timestamp
+     */
     @GetMapping("/api/hello", produces = [MediaType.APPLICATION_JSON_VALUE])
     fun helloApi(@RequestParam(defaultValue = "World") name: String): Map<String, String> {
         val timeGreeting = getTimeBasedGreeting()
@@ -39,6 +62,11 @@ class HelloApiController {
         )
     }
 
+    /**
+     * Determines the appropriate greeting based on the current time of day.
+     *
+     * @return one of: "Good Morning", "Good Afternoon", "Good Evening", "Good Night"
+     */
     private fun getTimeBasedGreeting(): String {
         val now = LocalTime.now()
         return when (now.hour) {
